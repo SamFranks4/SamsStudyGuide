@@ -1,312 +1,53 @@
-import React, { useState } from 'react';
-import { BookOpen, FileText, Gamepad2, BookA, ChevronDown, ChevronRight, Home, Menu, X } from 'lucide-react';
-
-const StudyWebsite = () => {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [expandedSubjects, setExpandedSubjects] = useState({});
-  const [expandedChapters, setExpandedChapters] = useState({});
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  const vocabularyData = {
-    chapter1: [
-      { term: "Economics", definition: "The study of how a society uses scarce resources to produce and distribute goods and services." },
-      { term: "Economic system", definition: "The way a government decides what gets produced and how it's distributed." },
-      { term: "Capitalism", definition: "An economic system based on private ownership and competition." },
-      { term: "Communism", definition: "An economic system where the government owns and controls almost everything." },
-      { term: "Socialism", definition: "An economic system where major industries are owned or heavily controlled by the government." },
-      { term: "Mixed economies", definition: "Economies that combine private ownership with government involvement." },
-      { term: "Business", definition: "An organization that seeks profit by providing goods or services." },
-      { term: "Not-for-profit organization", definition: "An organization focused on goals other than profit." },
-      { term: "Entrepreneurs", definition: "People who combine resources to create goods or services for profit." },
-      { term: "Strategic alliance", definition: "A cooperative agreement between businesses." },
-      { term: "Relationship management", definition: "Building long-term relationships with customers and partners." },
-      { term: "Factors of production", definition: "Resources used to make goods and services." },
-      { term: "Capital", definition: "Tools, machinery, and buildings used in production." },
-      { term: "Knowledge", definition: "The skills and talents of the workforce." },
-      { term: "Knowledge workers", definition: "Workers who create and apply knowledge." },
-      { term: "Productivity", definition: "How much output one worker can produce." },
-      { term: "Market structure", definition: "The number of suppliers in a market." },
-      { term: "Perfect competition", definition: "Many small firms, easy entry, similar products." },
-      { term: "Monopolistic competition", definition: "Many firms selling similar but slightly different products." },
-      { term: "Oligopoly", definition: "A few firms dominate the market." },
-      { term: "Pure monopoly", definition: "One firm controls the entire market." },
-      { term: "Barriers to entry", definition: "Factors that prevent new firms from entering a market." },
-      { term: "Demand", definition: "How much people are willing to buy at different prices." },
-      { term: "Demand curve", definition: "A graph showing quantity demanded at various prices." },
-      { term: "Equilibrium", definition: "Where quantity supplied equals quantity demanded." },
-      { term: "Costs", definition: "Expenses from producing goods or services." },
-      { term: "Revenue", definition: "Money earned from sales." },
-      { term: "Profit", definition: "Money left after all costs are paid." },
-      { term: "Gross domestic product (GDP)", definition: "Total value of goods and services produced in a country yearly." },
-      { term: "Economic growth", definition: "An increase in a nation's output." },
-      { term: "Business cycles", definition: "Up-and-down changes in economic activity." },
-      { term: "Recession", definition: "A decline in GDP for at least two quarters." },
-      { term: "Full employment", definition: "Everyone who wants to work has a job." },
-      { term: "Inflation", definition: "A rise in overall price levels." },
-      { term: "Consumer Price Index (CPI)", definition: "Measures prices paid by consumers." },
-      { term: "Producer Price Index (PPI)", definition: "Measures prices paid by producers." },
-      { term: "Cost-push inflation", definition: "Inflation caused by rising production costs." },
-      { term: "Demand-pull inflation", definition: "Inflation caused by high demand." },
-      { term: "Purchasing power", definition: "What money can actually buy." },
-      { term: "Fiscal policy", definition: "Government taxing and spending decisions." },
-      { term: "Monetary policy", definition: "Government control of money supply and interest rates." },
-      { term: "Expansionary policy", definition: "Policy that increases the money supply." },
-      { term: "Contractionary policy", definition: "Policy that tightens the money supply." },
-      { term: "Federal Reserve System (the Fed)", definition: "The U.S. central banking system." },
-      { term: "Federal budget deficit", definition: "When government spends more than it collects." },
-      { term: "National debt", definition: "Total of all past federal deficits." },
-      { term: "Crowding out", definition: "Government spending replacing private spending." },
-      { term: "Savings bonds", definition: "Small-denomination government bonds." },
-      { term: "Frictional unemployment", definition: "Short-term unemployment between jobs." },
-      { term: "Cyclical unemployment", definition: "Unemployment caused by economic downturns." },
-      { term: "Seasonal unemployment", definition: "Unemployment tied to certain seasons." },
-      { term: "Goods", definition: "Tangible products you can touch." },
-      { term: "Services", definition: "Intangible products you can't touch or store." },
-      { term: "Standard of living", definition: "What people can buy with their income." },
-      { term: "Quality of life", definition: "Overall well-being and happiness." },
-      { term: "Macroeconomics", definition: "The study of the economy as a whole." },
-      { term: "Microeconomics", definition: "The study of individual households and firms." },
-      { term: "Circular flow", definition: "Movement of money and resources between households, businesses, and government." },
-      { term: "Demography", definition: "The study of population statistics." },
-      { term: "Risk", definition: "The chance of losing time or money." }
-    ]
-  };
-
-  const subjects = [
-    {
-      id: 'intro-business',
-      title: 'Introduction To Business',
-      chapters: [
-        { id: 'ch1', number: 1, title: 'Understanding Economic Systems and Business' },
-        { id: 'ch2', number: 2, title: 'Making Ethical Decisions and Managing a Socially Responsible Business' },
-        { id: 'ch3', number: 3, title: 'Competing in the Global Marketplace' },
-        { id: 'ch4', number: 4, title: 'Forms of Business Ownership' },
-        { id: 'ch5', number: 5, title: 'Entrepreneurship: Starting and Managing Your Own Business' },
-        { id: 'ch6', number: 6, title: 'Management and Leadership in Today\'s Organizations' },
-        { id: 'ch7', number: 7, title: 'Designing Organizational Structures' },
-        { id: 'ch8', number: 8, title: 'Managing Human Resources and Labor Relations' },
-        { id: 'ch9', number: 9, title: 'Motivating Employees' },
-        { id: 'ch10', number: 10, title: 'Achieving World-Class Operations Management' },
-        { id: 'ch11', number: 11, title: 'Creating Products and Pricing Strategies to Meet Customers\' Needs' },
-        { id: 'ch12', number: 12, title: 'Distributing and Promoting Products and Services' },
-        { id: 'ch13', number: 13, title: 'Using Technology to Manage Information' },
-        { id: 'ch14', number: 14, title: 'Using Financial Information and Accounting' },
-        { id: 'ch15', number: 15, title: 'Understanding Money and Financial Institutions' },
-        { id: 'ch16', number: 16, title: 'Understanding Financial Management and Securities Markets' },
-        { id: 'ch17', number: 17, title: 'Your Career in Business' }
-      ]
-    }
-  ];
-
-  const sections = [
-    { id: 'textbook', icon: BookOpen, label: 'Textbook', color: 'blue' },
-    { id: 'study-guide', icon: FileText, label: 'Study Guide', color: 'green' },
-    { id: 'study-games', icon: Gamepad2, label: 'Study Games', color: 'purple' },
-    { id: 'vocabulary', icon: BookA, label: 'Vocabulary', color: 'orange' }
-  ];
-
-  const toggleSubject = (subjectId) => {
-    setExpandedSubjects(prev => ({
-      ...prev,
-      [subjectId]: !prev[subjectId]
-    }));
-  };
-
-  const toggleChapter = (chapterId) => {
-    setExpandedChapters(prev => ({
-      ...prev,
-      [chapterId]: !prev[chapterId]
-    }));
-  };
-
-  const renderContent = () => {
-    if (currentPage === 'home') {
-      return (
-        <div className="flex flex-col items-center justify-center min-h-full text-center px-8 py-12">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold text-blue-600 mb-6">Welcome to Your Study Hub</h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Your comprehensive learning platform for mastering business concepts and economics
-            </p>
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold text-blue-800 mb-3">Course Overview</h2>
-              <p className="text-gray-700 mb-2">Introduction to Business - 17 Chapters</p>
-              <p className="text-sm text-gray-600">OpenStax Textbook</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Hub - Introduction to Business</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>Study Portal</h2>
+                <p>Introduction to Business</p>
             </div>
-            <div className="grid grid-cols-2 gap-6 mt-12">
-              <div className="bg-white p-6 rounded-lg shadow-md border-2 border-blue-100 hover:shadow-lg transition-shadow">
-                <BookOpen className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Textbooks</h3>
-                <p className="text-gray-600 text-sm">Access comprehensive course materials</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md border-2 border-green-100 hover:shadow-lg transition-shadow">
-                <FileText className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Study Guides</h3>
-                <p className="text-gray-600 text-sm">Review key concepts and summaries</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md border-2 border-purple-100 hover:shadow-lg transition-shadow">
-                <Gamepad2 className="w-12 h-12 text-purple-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Study Games</h3>
-                <p className="text-gray-600 text-sm">Learn through interactive activities</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md border-2 border-orange-100 hover:shadow-lg transition-shadow">
-                <BookA className="w-12 h-12 text-orange-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Vocabulary</h3>
-                <p className="text-gray-600 text-sm">Master essential terminology</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
+            <nav class="sidebar-nav">
+                <button class="nav-item home-btn" onclick="showHome()">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
 
-    // Parse current page
-    const parts = currentPage.split('-');
-    const subjectId = parts[0] + '-' + parts[1];
-    const chapterId = parts[2];
-    const sectionId = parts[3];
-    
-    const subject = subjects.find(s => s.id === subjectId);
-    const chapter = subject?.chapters.find(c => c.id === chapterId);
-
-    if (sectionId === 'vocabulary' && chapterId === 'ch1') {
-      const vocabList = vocabularyData.chapter1;
-      return (
-        <div className="p-8">
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-blue-600 mb-2">Chapter 1 Vocabulary</h1>
-            <p className="text-xl text-gray-600 mb-1">{chapter?.title}</p>
-            <p className="text-gray-500">{vocabList.length} terms</p>
-          </div>
-          <div className="grid gap-4 max-w-4xl">
-            {vocabList.map((item, index) => (
-              <div key={index} className="bg-white p-5 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold text-orange-700 mb-2">{item.term}</h3>
-                <p className="text-gray-700">{item.definition}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
-    }
-
-    // Default content for other sections
-    return (
-      <div className="flex items-center justify-center min-h-full p-8">
-        <div className="text-center max-w-2xl">
-          <div className="mb-6">
-            <h2 className="text-4xl font-bold text-gray-800 mb-3">
-              {chapter?.title}
-            </h2>
-            <p className="text-xl text-gray-600">Chapter {chapter?.number}</p>
-          </div>
-          <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-8 mb-6">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-3">
-              {sections.find(s => s.id === sectionId)?.label}
-            </h3>
-            <p className="text-gray-600">Content coming soon for this section</p>
-          </div>
-          <p className="text-gray-500">
-            Select a different chapter or section from the sidebar to explore more content.
-          </p>
-        </div>
-      </div>
-    );
-  };
-
-  return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <div className={`${sidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 bg-white shadow-lg overflow-hidden flex flex-col`}>
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-blue-600">Study Portal</h2>
-          <p className="text-sm text-gray-500 mt-1">Introduction to Business</p>
-        </div>
-        <nav className="flex-1 p-4 overflow-y-auto">
-          <button
-            onClick={() => setCurrentPage('home')}
-            className={`flex items-center gap-3 w-full p-3 mb-4 rounded-lg hover:bg-blue-50 transition-colors ${currentPage === 'home' ? 'bg-blue-100' : ''}`}
-          >
-            <Home className="w-5 h-5 text-blue-600" />
-            <span className="font-semibold text-gray-700">Home</span>
-          </button>
-
-          {subjects.map(subject => (
-            <div key={subject.id} className="mb-4">
-              <button
-                onClick={() => toggleSubject(subject.id)}
-                className="flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-100 transition-colors bg-gray-50"
-              >
-                <span className="font-bold text-gray-800">{subject.title}</span>
-                {expandedSubjects[subject.id] ? 
-                  <ChevronDown className="w-5 h-5" /> : 
-                  <ChevronRight className="w-5 h-5" />
-                }
-              </button>
-              
-              {expandedSubjects[subject.id] && (
-                <div className="ml-2 mt-2 space-y-1">
-                  {subject.chapters.map(chapter => (
-                    <div key={chapter.id}>
-                      <button
-                        onClick={() => toggleChapter(`${subject.id}-${chapter.id}`)}
-                        className="flex items-center justify-between w-full p-2 rounded hover:bg-gray-50 transition-colors text-left"
-                      >
-                        <span className="text-sm font-semibold text-gray-700">
-                          Ch {chapter.number}: {chapter.title}
-                        </span>
-                        {expandedChapters[`${subject.id}-${chapter.id}`] ? 
-                          <ChevronDown className="w-4 h-4 flex-shrink-0" /> : 
-                          <ChevronRight className="w-4 h-4 flex-shrink-0" />
-                        }
-                      </button>
-                      
-                      {expandedChapters[`${subject.id}-${chapter.id}`] && (
-                        <div className="ml-4 mt-1 space-y-1">
-                          {sections.map(section => {
-                            const Icon = section.icon;
-                            const pageId = `${subject.id}-${chapter.id}-${section.id}`;
-                            return (
-                              <button
-                                key={section.id}
-                                onClick={() => setCurrentPage(pageId)}
-                                className={`flex items-center gap-2 w-full p-2 rounded hover:bg-${section.color}-50 transition-colors text-left ${
-                                  currentPage === pageId ? `bg-${section.color}-100` : ''
-                                }`}
-                              >
-                                <Icon className={`w-4 h-4 text-${section.color}-600 flex-shrink-0`} />
-                                <span className="text-sm text-gray-700">{section.label}</span>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
+                <div class="subject-section">
+                    <button class="subject-header" onclick="toggleSubject('intro-business')">
+                        <span>Introduction To Business</span>
+                        <i class="fas fa-chevron-right" id="subject-icon-intro-business"></i>
+                    </button>
+                    <div id="subject-intro-business" class="subject-content">
+                        <!-- Chapters will be inserted here by JavaScript -->
                     </div>
-                  ))}
                 </div>
-              )}
-            </div>
-          ))}
-        </nav>
-      </div>
+            </nav>
+        </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="bg-white shadow-sm p-4 flex items-center gap-4 border-b">
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-          <h1 className="text-xl font-semibold text-gray-800">My Study Dashboard</h1>
-        </header>
-        <main className="flex-1 overflow-y-auto">
-          {renderContent()}
-        </main>
-      </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="top-header">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                </button>
+                <h1>My Study Dashboard</h1>
+            </header>
+            <main id="content-area">
+                <!-- Content will be inserted here by JavaScript -->
+            </main>
+        </div>
     </div>
-  );
-};
 
-export default StudyWebsite;
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
