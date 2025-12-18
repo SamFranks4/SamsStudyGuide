@@ -1,53 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Hub - Introduction to Business</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>Study AI</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <div class="app-container">
-        <!-- Sidebar -->
-        <div id="sidebar" class="sidebar">
-            <div class="sidebar-header">
-                <h2>Study Portal</h2>
-                <p>Introduction to Business</p>
-            </div>
-            <nav class="sidebar-nav">
-                <button class="nav-item home-btn" onclick="showHome()">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-
-                <div class="subject-section">
-                    <button class="subject-header" onclick="toggleSubject('intro-business')">
-                        <span>Introduction To Business</span>
-                        <i class="fas fa-chevron-right" id="subject-icon-intro-business"></i>
-                    </button>
-                    <div id="subject-intro-business" class="subject-content">
-                        <!-- Chapters will be inserted here by JavaScript -->
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <header class="top-header">
-                <button class="menu-toggle" onclick="toggleSidebar()">
-                    <i class="fas fa-bars" id="menu-icon"></i>
-                </button>
-                <h1>My Study Dashboard</h1>
-            </header>
-            <main id="content-area">
-                <!-- Content will be inserted here by JavaScript -->
-            </main>
-        </div>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-left">StudyMind</div>
+    <nav class="nav-center">
+      <a href="#">Models</a>
+      <a href="#">Research</a>
+      <a href="#">Science</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn-outline">Build</button>
+      <button class="btn-solid">Chat</button>
     </div>
+  </header>
 
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="particles"></canvas>
+
+    <div class="hero-content">
+      <h1>Gemini-Style AI</h1>
+      <p>Our most intelligent study system that brings knowledge to life</p>
+
+      <div class="hero-buttons">
+        <button class="btn-solid">Try it</button>
+        <button class="btn-outline">Learn more</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
