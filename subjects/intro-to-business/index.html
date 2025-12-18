@@ -1,1 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction to Business — Study Hub</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    /* Sidebar-specific styles */
+    .sidebar-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 260px;
+      background: #f8fafc;
+      border-right: 1px solid #e2e8f0;
+      padding: 1.5rem 1rem;
+      overflow-y: auto;
+    }
+    .sidebar h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: #1e40af;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin-bottom: 0.6rem;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #334155;
+      padding: 0.5rem;
+      display: block;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .sidebar a:hover {
+      background: #e0f2fe;
+      color: #1d4ed8;
+    }
+    .main-area {
+      flex: 1;
+      padding: 2rem;
+    }
+    .chapter-title {
+      font-size: 2rem;
+      color: #1e3a8a;
+      margin-bottom: 1rem;
+    }
+    .chapter-description {
+      color: #64748b;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+    }
+    .option-card {
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .option-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-color: #93c5fd;
+    }
+    .option-card h3 {
+      margin-bottom: 0.75rem;
+      color: #1d4ed8;
+    }
+    .option-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .option-card a:hover {
+      text-decoration: underline;
+    }
 
+    /* Mobile Collapsible Sidebar */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .main-area {
+        padding: 2rem 1rem;
+      }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: #1e40af;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        font-size: 1.25rem;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        z-index: 999;
+      }
+      .overlay.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Menu Toggle -->
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="sidebar-layout">
+    <aside class="sidebar" id="sidebar">
+      <h2>Introduction to Business</h2>
+      <ul>
+        <li><a href="#ch01">Understanding Economic Systems and Business</a></li>
+        <li><a href="#ch02">Making Ethical Decisions and Managing a Socially Responsible Business</a></li>
+        <li><a href="#ch03">Competing in the Global Marketplace</a></li>
+        <li><a href="#ch04">Forms of Business Ownership</a></li>
+        <li><a href="#ch05">Entrepreneurship: Starting and Managing Your Own Business</a></li>
+        <li><a href="#ch06">Management and Leadership in Today’s Organizations</a></li>
+        <li><a href="#ch07">Designing Organizational Structures</a></li>
+        <li><a href="#ch08">Managing Human Resources and Labor Relations</a></li>
+        <li><a href="#ch09">Motivating Employees</a></li>
+        <li><a href="#ch10">Achieving World-Class Operations Management</a></li>
+        <li><a href="#ch11">Creating Products and Pricing Strategies to Meet Customers’ Needs</a></li>
+        <li><a href="#ch12">Distributing and Promoting Products and Services</a></li>
+        <li><a href="#ch13">Using Technology to Manage Information</a></li>
+        <li><a href="#ch14">Using Financial Information and Accounting</a></li>
+        <li><a href="#ch15">Understanding Money and Financial Institutions</a></li>
+        <li><a href="#ch16">Understanding Financial Management and Securities Markets</a></li>
+        <li><a href="#ch17">Your Career in Business</a></li>
+        <li><a href="#appendix">Appendix – Legal and Tax Environment</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-area">
+      <h1 class="chapter-title">Introduction to Business</h1>
+      <p class="chapter-description">
+        Based on <em>OpenStax Introduction to Business</em> (CC BY 4.0).  
+        Select a chapter from the sidebar to access textbook content, study guides, games, and vocabulary.
+      </p>
+
+      <div class="options-grid">
+        <div class="option-card">
+          <h3>📘 Textbook</h3>
+          <p>Read the full OpenStax chapter</p>
+          <a href="https://openstax.org/books/introduction-business" target="_blank">View Textbook</a>
+        </div>
+        <div class="option-card">
+          <h3>📝 Study Guide</h3>
+          <p>Summarized notes & key concepts</p>
+          <a href="#">Coming Soon</a>
+        </div>
+        <div class="option-card">
+          <h3>🎮 Study Games</h3>
+          <p>Flashcards, quizzes & matching</p>
+          <a href="#">Coming Soon</a>
+        </div>
+        <div class="option-card">
+          <h3>🔤 Vocabulary</h3>
+          <p>Key terms & definitions</p>
+          <a href="#">Coming Soon</a>
+        </div>
+      </div>
+
+      <p style="margin-top: 3rem; color: #64748b; font-size: 0.9rem;">
+        <strong>Attribution:</strong> Content adapted from: <em>Introduction to Business</em>, OpenStax, 2019.<br>
+        <a href="https://openstax.org/books/introduction-business" target="_blank">https://openstax.org/books/introduction-business</a> — 
+        CC BY 4.0 (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">license</a>)
+      </p>
+    </main>
+  </div>
+
+  <script>
+    // Mobile sidebar toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Optional: scroll to chapter ID (if you later split into separate pages)
+    // For now, just shows main landing
+  </script>
+</body>
+</html>
