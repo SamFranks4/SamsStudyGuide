@@ -2,41 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Study AI</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Hub</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-
 <body>
-  <!-- NAVBAR -->
-  <header class="nav">
-    <div class="nav-left">StudyMind</div>
-    <nav class="nav-center">
-      <a href="#">Intro To Business</a>
-      <a href="#">Intro To Marketing</a>
-      <a href="#">Intro To Accounting</a>
-      <a href="#">Personal Finance</a>
-    </nav>
-    <div class="nav-right">
-      <button class="btn-outline">Build</button>
-      <button class="btn-solid">Chat</button>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <canvas id="particles"></canvas>
-
-    <div class="hero-content">
-      <h1>Gemini-Style AI</h1>
-      <p>Our most intelligent study system that brings knowledge to life</p>
-
-      <div class="hero-buttons">
-        <button class="btn-solid">Try it</button>
-        <button class="btn-outline">Learn more</button>
+  <div class="layout">
+    <!-- Header Navigation -->
+    <header>
+      <div class="logo-container">
+        <span class="logo-text">Study Hub</span>
+        <span class="dropdown-arrow">▼</span>
       </div>
-    </div>
-  </section>
+      
+      <nav>
+        <ul>
+          <li><a href="#" class="nav-item">Intro To Business</a></li>
+          <li><a href="#" class="nav-item">Intro to Marketing</a></li>
+          <li><a href="#" class="nav-item">Intro to Accounting</a></li>
+          <li><a href="#" class="nav-item">Personal Finance</a></li>
+        </ul>
+      </nav>
+      
+      <div class="action-buttons">
+        <button>Build with Gemini</button>
+        <button>Chat with Gemini</button>
+      </div>
+    </header>
 
-  <script src="script.js"></script>
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="hero-section">
+        <div class="content">
+          <h1>Welcome to Your Study Hub</h1>
+          <p>Organize your learning with interactive notes, flashcards, and quizzes.</p>
+          
+          <div class="buttons">
+            <button class="primary-button">Start Learning</button>
+            <button class="secondary-button">Explore Subjects</button>
+            <button class="learn-more">Learn more →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="additional-content">
+        <h2 class="section-title">Available Subjects</h2>
+        <div class="grid">
+          <div class="card">
+            <div class="icon">📚</div>
+            <h3>Introduction to Business</h3>
+            <p>Learn the fundamentals of business operations, economics, and entrepreneurship.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📈</div>
+            <h3>Introduction to Marketing</h3>
+            <p>Discover marketing principles, consumer behavior, and digital marketing strategies.</p>
+          </div>
+          <div class="card">
+            <div class="icon">💰</div>
+            <h3>Introduction to Accounting</h3>
+            <p>Understand financial statements, bookkeeping, and accounting principles.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📊</div>
+            <h3>Personal Finance</h3>
+            <p>Master budgeting, investing, saving, and managing your personal finances.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
